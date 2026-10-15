@@ -206,3 +206,13 @@ Developed by **Md Abu Hasan**. [Portfolio](https://hasan.online/) · [GitHub](ht
 Publisher and maintainer: **QuixDevs**. [Website](https://quixdevs.com/)
 
 QuixDevs Tickera REST API is an independent extension and is not officially affiliated with Tickera.
+
+
+## ⭐ Support This Project
+
+If you find this useful:
+- ⭐ Star the repository on GitHub
+- 🔗 Share it with fellow Ionic, WordPress, WooCommerce, or mobile app developers
+- 💡 Contribute with feedback or pull requests
+
+> Together, we make WordPress more mobile-friendly and developer-first 🚀
