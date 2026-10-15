@@ -1,0 +1,722 @@
+{
+  "info": {
+    "name": "QuixDevs Tickera REST API",
+    "description": "All eight author-scoped operations. Set base_url to https://example.com/wp-json/quixdevs-tickera/v1. Store user-specific credentials as local secret values. Synthetic examples only.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{username}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{application_password}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://example.com/wp-json/quixdevs-tickera/v1"
+    },
+    {
+      "key": "event_id",
+      "value": "123"
+    },
+    {
+      "key": "ticket_id",
+      "value": "456"
+    },
+    {
+      "key": "username",
+      "value": "selected_author"
+    },
+    {
+      "key": "application_password",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "List your events",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/events",
+        "description": "Only caller-owned editable events; registered `edit_tc_events` capability required. No database writes. See docs/rest-api.md for fields, validation and all error codes."
+      },
+      "response": [
+        {
+          "name": "Synthetic success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/events",
+            "description": "Only caller-owned editable events; registered `edit_tc_events` capability required. No database writes. See docs/rest-api.md for fields, validation and all error codes."
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"id\": 123,\n    \"title\": \"QuixDevs Conference\",\n    \"description\": \"<p>Meet our community.</p>\",\n    \"status\": \"draft\",\n    \"active\": false,\n    \"author_id\": 15,\n    \"timezone\": \"Asia/Dhaka\",\n    \"created_at\": \"2026-10-14T16:00:00Z\",\n    \"updated_at\": \"2026-10-14T16:00:00Z\",\n    \"start_at\": \"2027-01-14T09:00\",\n    \"end_at\": \"2027-01-14T18:00\",\n    \"location\": \"Dhaka\",\n    \"terms\": \"<p>Admission terms.</p>\",\n    \"category_ids\": [],\n    \"featured_image_id\": 0,\n    \"logo_id\": 0\n  }\n]"
+        },
+        {
+          "name": "Authentication required",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/events",
+            "description": "Only caller-owned editable events; registered `edit_tc_events` capability required. No database writes. See docs/rest-api.md for fields, validation and all error codes."
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"code\": \"quixdevs_authentication_required\",\n  \"message\": \"Authentication is required.\",\n  \"data\": {\n    \"status\": 401\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Create an event",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/events",
+        "description": "Requires `create_tc_events`; author is forced to the caller. Grant editing capabilities for subsequent access. Publish/private requires the publish capability. Creates tc_events; the real Tickera save hook links its presentation page to itself and maintains one check-in API key. No key is returned. See docs/rest-api.md for fields, validation and all error codes.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"QuixDevs Conference\",\n  \"description\": \"<p>Meet our community.</p>\",\n  \"start_at\": \"2027-01-14T09:00\",\n  \"end_at\": \"2027-01-14T18:00\",\n  \"location\": \"Dhaka\",\n  \"terms\": \"<p>Admission terms.</p>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "Synthetic success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/events",
+            "description": "Requires `create_tc_events`; author is forced to the caller. Grant editing capabilities for subsequent access. Publish/private requires the publish capability. Creates tc_events; the real Tickera save hook links its presentation page to itself and maintains one check-in API key. No key is returned. See docs/rest-api.md for fields, validation and all error codes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"QuixDevs Conference\",\n  \"description\": \"<p>Meet our community.</p>\",\n  \"start_at\": \"2027-01-14T09:00\",\n  \"end_at\": \"2027-01-14T18:00\",\n  \"location\": \"Dhaka\",\n  \"terms\": \"<p>Admission terms.</p>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 123,\n  \"title\": \"QuixDevs Conference\",\n  \"description\": \"<p>Meet our community.</p>\",\n  \"status\": \"draft\",\n  \"active\": false,\n  \"author_id\": 15,\n  \"timezone\": \"Asia/Dhaka\",\n  \"created_at\": \"2026-10-14T16:00:00Z\",\n  \"updated_at\": \"2026-10-14T16:00:00Z\",\n  \"start_at\": \"2027-01-14T09:00\",\n  \"end_at\": \"2027-01-14T18:00\",\n  \"location\": \"Dhaka\",\n  \"terms\": \"<p>Admission terms.</p>\",\n  \"category_ids\": [],\n  \"featured_image_id\": 0,\n  \"logo_id\": 0\n}"
+        },
+        {
+          "name": "Authentication required",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/events",
+            "description": "Requires `create_tc_events`; author is forced to the caller. Grant editing capabilities for subsequent access. Publish/private requires the publish capability. Creates tc_events; the real Tickera save hook links its presentation page to itself and maintains one check-in API key. No key is returned. See docs/rest-api.md for fields, validation and all error codes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"QuixDevs Conference\",\n  \"description\": \"<p>Meet our community.</p>\",\n  \"start_at\": \"2027-01-14T09:00\",\n  \"end_at\": \"2027-01-14T18:00\",\n  \"location\": \"Dhaka\",\n  \"terms\": \"<p>Admission terms.</p>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"code\": \"quixdevs_authentication_required\",\n  \"message\": \"Authentication is required.\",\n  \"data\": {\n    \"status\": 401\n  }\n}"
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Created\", function () { pm.response.to.have.status(201); });",
+              "if (pm.response.code === 201) pm.collectionVariables.set(\"event_id\", pm.response.json().id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Retrieve your event",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/events/{{event_id}}",
+        "description": "Own the actual tc_events record and have its registered edit capability. No database writes. See docs/rest-api.md for fields, validation and all error codes."
+      },
+      "response": [
+        {
+          "name": "Synthetic success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/events/{{event_id}}",
+            "description": "Own the actual tc_events record and have its registered edit capability. No database writes. See docs/rest-api.md for fields, validation and all error codes."
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 123,\n  \"title\": \"QuixDevs Conference\",\n  \"description\": \"<p>Meet our community.</p>\",\n  \"status\": \"draft\",\n  \"active\": false,\n  \"author_id\": 15,\n  \"timezone\": \"Asia/Dhaka\",\n  \"created_at\": \"2026-10-14T16:00:00Z\",\n  \"updated_at\": \"2026-10-14T16:00:00Z\",\n  \"start_at\": \"2027-01-14T09:00\",\n  \"end_at\": \"2027-01-14T18:00\",\n  \"location\": \"Dhaka\",\n  \"terms\": \"<p>Admission terms.</p>\",\n  \"category_ids\": [],\n  \"featured_image_id\": 0,\n  \"logo_id\": 0\n}"
+        },
+        {
+          "name": "Authentication required",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/events/{{event_id}}",
+            "description": "Own the actual tc_events record and have its registered edit capability. No database writes. See docs/rest-api.md for fields, validation and all error codes."
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"code\": \"quixdevs_authentication_required\",\n  \"message\": \"Authentication is required.\",\n  \"data\": {\n    \"status\": 401\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Partially edit your event",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/events/{{event_id}}",
+        "description": "Own and be able to edit the event; supplied publish/private status additionally requires publication permission. Ownership is rechecked before saving. Only supplied post/meta fields change. Tickera updates its key title/status, preserving the existing key; unrelated display metadata remains intact. See docs/rest-api.md for fields, validation and all error codes.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"Updated venue\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "Synthetic success",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/events/{{event_id}}",
+            "description": "Own and be able to edit the event; supplied publish/private status additionally requires publication permission. Ownership is rechecked before saving. Only supplied post/meta fields change. Tickera updates its key title/status, preserving the existing key; unrelated display metadata remains intact. See docs/rest-api.md for fields, validation and all error codes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": \"Updated venue\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 123,\n  \"title\": \"QuixDevs Conference\",\n  \"description\": \"<p>Meet our community.</p>\",\n  \"status\": \"draft\",\n  \"active\": false,\n  \"author_id\": 15,\n  \"timezone\": \"Asia/Dhaka\",\n  \"created_at\": \"2026-10-14T16:00:00Z\",\n  \"updated_at\": \"2026-10-14T16:00:00Z\",\n  \"start_at\": \"2027-01-14T09:00\",\n  \"end_at\": \"2027-01-14T18:00\",\n  \"location\": \"Updated venue\",\n  \"terms\": \"<p>Admission terms.</p>\",\n  \"category_ids\": [],\n  \"featured_image_id\": 0,\n  \"logo_id\": 0\n}"
+        },
+        {
+          "name": "Authentication required",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/events/{{event_id}}",
+            "description": "Own and be able to edit the event; supplied publish/private status additionally requires publication permission. Ownership is rechecked before saving. Only supplied post/meta fields change. Tickera updates its key title/status, preserving the existing key; unrelated display metadata remains intact. See docs/rest-api.md for fields, validation and all error codes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": \"Updated venue\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"code\": \"quixdevs_authentication_required\",\n  \"message\": \"Authentication is required.\",\n  \"data\": {\n    \"status\": 401\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "List tickets for your event",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/events/{{event_id}}/tickets",
+        "description": "Own and be able to edit parent event; `edit_tc_tickets` required. Every returned ticket must belong to caller and have the same owned parent. No database writes. See docs/rest-api.md for fields, validation and all error codes."
+      },
+      "response": [
+        {
+          "name": "Synthetic success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/events/{{event_id}}/tickets",
+            "description": "Own and be able to edit parent event; `edit_tc_tickets` required. Every returned ticket must belong to caller and have the same owned parent. No database writes. See docs/rest-api.md for fields, validation and all error codes."
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"id\": 456,\n    \"title\": \"VIP\",\n    \"description\": \"<p>VIP admission.</p>\",\n    \"status\": \"draft\",\n    \"active\": false,\n    \"author_id\": 15,\n    \"timezone\": \"Asia/Dhaka\",\n    \"created_at\": \"2026-10-14T16:01:00Z\",\n    \"updated_at\": \"2026-10-14T16:01:00Z\",\n    \"event_id\": 123,\n    \"price\": \"50.00\",\n    \"quantity\": 100,\n    \"sale_start_at\": null,\n    \"sale_end_at\": null,\n    \"template_id\": 0\n  }\n]"
+        },
+        {
+          "name": "Authentication required",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/events/{{event_id}}/tickets",
+            "description": "Own and be able to edit parent event; `edit_tc_tickets` required. Every returned ticket must belong to caller and have the same owned parent. No database writes. See docs/rest-api.md for fields, validation and all error codes."
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"code\": \"quixdevs_authentication_required\",\n  \"message\": \"Authentication is required.\",\n  \"data\": {\n    \"status\": 401\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Create a ticket type",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/events/{{event_id}}/tickets",
+        "description": "Own editable parent event plus `create_tc_tickets`. Author and event link are server-enforced. Optional event_id must match the path. Creates standalone tc_tickets, sets verified event_name relationship, price, quantity/sale defaults and supplied configuration. No sales/attendee records are created. See docs/rest-api.md for fields, validation and all error codes.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"VIP\",\n  \"description\": \"<p>VIP admission.</p>\",\n  \"price\": \"50.00\",\n  \"quantity\": 100\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "Synthetic success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/events/{{event_id}}/tickets",
+            "description": "Own editable parent event plus `create_tc_tickets`. Author and event link are server-enforced. Optional event_id must match the path. Creates standalone tc_tickets, sets verified event_name relationship, price, quantity/sale defaults and supplied configuration. No sales/attendee records are created. See docs/rest-api.md for fields, validation and all error codes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"VIP\",\n  \"description\": \"<p>VIP admission.</p>\",\n  \"price\": \"50.00\",\n  \"quantity\": 100\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 456,\n  \"title\": \"VIP\",\n  \"description\": \"<p>VIP admission.</p>\",\n  \"status\": \"draft\",\n  \"active\": false,\n  \"author_id\": 15,\n  \"timezone\": \"Asia/Dhaka\",\n  \"created_at\": \"2026-10-14T16:01:00Z\",\n  \"updated_at\": \"2026-10-14T16:01:00Z\",\n  \"event_id\": 123,\n  \"price\": \"50.00\",\n  \"quantity\": 100,\n  \"sale_start_at\": null,\n  \"sale_end_at\": null,\n  \"template_id\": 0\n}"
+        },
+        {
+          "name": "Authentication required",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/events/{{event_id}}/tickets",
+            "description": "Own editable parent event plus `create_tc_tickets`. Author and event link are server-enforced. Optional event_id must match the path. Creates standalone tc_tickets, sets verified event_name relationship, price, quantity/sale defaults and supplied configuration. No sales/attendee records are created. See docs/rest-api.md for fields, validation and all error codes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"VIP\",\n  \"description\": \"<p>VIP admission.</p>\",\n  \"price\": \"50.00\",\n  \"quantity\": 100\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"code\": \"quixdevs_authentication_required\",\n  \"message\": \"Authentication is required.\",\n  \"data\": {\n    \"status\": 401\n  }\n}"
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Created\", function () { pm.response.to.have.status(201); });",
+              "if (pm.response.code === 201) pm.collectionVariables.set(\"ticket_id\", pm.response.json().id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Retrieve your ticket type",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/tickets/{{ticket_id}}",
+        "description": "Own and be able to edit both the tc_tickets record and its actual associated tc_events record. No database writes. See docs/rest-api.md for fields, validation and all error codes."
+      },
+      "response": [
+        {
+          "name": "Synthetic success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/tickets/{{ticket_id}}",
+            "description": "Own and be able to edit both the tc_tickets record and its actual associated tc_events record. No database writes. See docs/rest-api.md for fields, validation and all error codes."
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 456,\n  \"title\": \"VIP\",\n  \"description\": \"<p>VIP admission.</p>\",\n  \"status\": \"draft\",\n  \"active\": false,\n  \"author_id\": 15,\n  \"timezone\": \"Asia/Dhaka\",\n  \"created_at\": \"2026-10-14T16:01:00Z\",\n  \"updated_at\": \"2026-10-14T16:01:00Z\",\n  \"event_id\": 123,\n  \"price\": \"50.00\",\n  \"quantity\": 100,\n  \"sale_start_at\": null,\n  \"sale_end_at\": null,\n  \"template_id\": 0\n}"
+        },
+        {
+          "name": "Authentication required",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/tickets/{{ticket_id}}",
+            "description": "Own and be able to edit both the tc_tickets record and its actual associated tc_events record. No database writes. See docs/rest-api.md for fields, validation and all error codes."
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"code\": \"quixdevs_authentication_required\",\n  \"message\": \"Authentication is required.\",\n  \"data\": {\n    \"status\": 401\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Partially edit your ticket type",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/tickets/{{ticket_id}}",
+        "description": "Own and be able to edit ticket and parent event; publication permission for publish/private. Association and author cannot change. Only supplied fields change. Sold counts, orders, generated tickets and attendee/check-in data remain untouched. See docs/rest-api.md for fields, validation and all error codes.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"price\": \"60.00\",\n  \"quantity\": 120\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "Synthetic success",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/tickets/{{ticket_id}}",
+            "description": "Own and be able to edit ticket and parent event; publication permission for publish/private. Association and author cannot change. Only supplied fields change. Sold counts, orders, generated tickets and attendee/check-in data remain untouched. See docs/rest-api.md for fields, validation and all error codes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": \"60.00\",\n  \"quantity\": 120\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 456,\n  \"title\": \"VIP\",\n  \"description\": \"<p>VIP admission.</p>\",\n  \"status\": \"draft\",\n  \"active\": false,\n  \"author_id\": 15,\n  \"timezone\": \"Asia/Dhaka\",\n  \"created_at\": \"2026-10-14T16:01:00Z\",\n  \"updated_at\": \"2026-10-14T16:01:00Z\",\n  \"event_id\": 123,\n  \"price\": \"60.00\",\n  \"quantity\": 120,\n  \"sale_start_at\": null,\n  \"sale_end_at\": null,\n  \"template_id\": 0\n}"
+        },
+        {
+          "name": "Authentication required",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/tickets/{{ticket_id}}",
+            "description": "Own and be able to edit ticket and parent event; publication permission for publish/private. Association and author cannot change. Only supplied fields change. Sold counts, orders, generated tickets and attendee/check-in data remain untouched. See docs/rest-api.md for fields, validation and all error codes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": \"60.00\",\n  \"quantity\": 120\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"code\": \"quixdevs_authentication_required\",\n  \"message\": \"Authentication is required.\",\n  \"data\": {\n    \"status\": 401\n  }\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+name: Prepare draft release
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing stable version tag, for example v1.0.0
+        required: true
+        type: string
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+concurrency:
+  group: tickera-release-${{ inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    outputs:
+      commit: ${{ steps.identity.outputs.commit }}
+      tag: ${{ steps.identity.outputs.tag }}
+    steps:
+      - name: Checkout automation revision
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.workflow_sha }}
+          path: automation
+          persist-credentials: false
+      - name: Checkout existing release tag
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ inputs.tag || github.ref_name }}
+          path: source
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Validate exact tag and build tagged source with current automation
+        id: identity
+        env:
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          [[ "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          COMMIT="$(git -C source rev-parse HEAD)"
+          test "$(git -C source rev-parse "$RELEASE_TAG^{commit}")" = "$COMMIT"
+          echo "commit=$COMMIT" >> "$GITHUB_OUTPUT"
+          echo "tag=$RELEASE_TAG" >> "$GITHUB_OUTPUT"
+          mkdir -p automation/.work
+          python3 -m unittest discover -s automation/tests/Release -v
+          python3 automation/tools/build-release.py --source source --tag "$RELEASE_TAG" --require-clean
+      - name: Scan tagged source, history and package
+        run: |
+          python3 automation/tools/install-tools.py
+          automation/.work/tools/actionlint -shellcheck= automation/.github/workflows/*.yml
+          automation/.work/tools/gitleaks dir source --config=automation/.gitleaks.toml --redact --no-banner
+          automation/.work/tools/gitleaks git source --config=automation/.gitleaks.toml --redact --no-banner
+          mkdir -p extracted
+          unzip -q source/dist/quixdevs-tickera-rest-api.zip -d extracted
+          automation/.work/tools/gitleaks dir extracted --redact --no-banner
+      - uses: actions/upload-artifact@v4
+        with:
+          name: validated-release
+          path: source/dist/
+          if-no-files-found: error
+  validate:
+    needs: package
+    uses: ./.github/workflows/ci.yml
+    with:
+      source_ref: ${{ needs.package.outputs.commit }}
+    permissions:
+      contents: read
+  draft:
+    needs: [package, validate]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.workflow_sha }}
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: validated-release
+          path: dist
+      - name: Read release notes from the exact validated commit
+        env:
+          SOURCE_COMMIT: ${{ needs.package.outputs.commit }}
+        run: |
+          git fetch --no-tags origin "$SOURCE_COMMIT"
+          git show "$SOURCE_COMMIT:docs/github-release-notes.md" > dist/notes.md
+      - name: Create or resume draft; never publish
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          RELEASE_TAG: ${{ needs.package.outputs.tag }}
+          SOURCE_COMMIT: ${{ needs.package.outputs.commit }}
+        run: |
+          python3 tools/create-draft-release.py --tag "$RELEASE_TAG" --commit "$SOURCE_COMMIT" --dist dist --notes dist/notes.md

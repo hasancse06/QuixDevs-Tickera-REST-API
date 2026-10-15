@@ -1,0 +1,345 @@
+{
+  "total_source_files": 81,
+  "compared_to_original": {
+    "added": 22,
+    "modified copy": 28,
+    "copied unchanged": 31
+  },
+  "all_created_in_new_directory": true,
+  "generated_distribution_files": [
+    "dist/quixdevs-tickera-rest-api.zip",
+    "dist/quixdevs-tickera-rest-api.zip.sha256",
+    "dist/release-manifest.json"
+  ],
+  "excluded_local_development": [
+    "vendor/",
+    ".work/",
+    "__pycache__/"
+  ],
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "status": "modified copy"
+    },
+    {
+      "path": ".github/workflows/release.yml",
+      "status": "added"
+    },
+    {
+      "path": ".gitignore",
+      "status": "modified copy"
+    },
+    {
+      "path": ".gitleaks.toml",
+      "status": "added"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "status": "modified copy"
+    },
+    {
+      "path": "LICENSE",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "README.md",
+      "status": "modified copy"
+    },
+    {
+      "path": "composer.json",
+      "status": "modified copy"
+    },
+    {
+      "path": "composer.lock",
+      "status": "modified copy"
+    },
+    {
+      "path": "docs/authentication.md",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "docs/authorization.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/branding/README.md",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "docs/branding/github-social-preview.png",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "docs/branding/github-social-preview.svg",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "docs/branding/quixdevs-logo.png",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "docs/branding/tickera-api-mark.svg",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "docs/branding/wordpress-banner.svg",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "docs/compatibility.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/configuration.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/distribution-files.json",
+      "status": "added"
+    },
+    {
+      "path": "docs/documentation-finalization.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/examples/curl.md",
+      "status": "modified copy"
+    },
+    {
+      "path": "docs/examples/ionic-angular.md",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "docs/examples/javascript.md",
+      "status": "modified copy"
+    },
+    {
+      "path": "docs/examples/php.md",
+      "status": "modified copy"
+    },
+    {
+      "path": "docs/examples.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/github-listing.md",
+      "status": "modified copy"
+    },
+    {
+      "path": "docs/github-publishing-checklist.md",
+      "status": "modified copy"
+    },
+    {
+      "path": "docs/github-release-notes.md",
+      "status": "modified copy"
+    },
+    {
+      "path": "docs/implementation-report.md",
+      "status": "modified copy"
+    },
+    {
+      "path": "docs/installation.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/licensing.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/postman/README.md",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "docs/postman/quixdevs-tickera-rest-api.postman_collection.json",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "docs/publication-readiness.md",
+      "status": "modified copy"
+    },
+    {
+      "path": "docs/release-distribution.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/release-readiness-report.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/rest-api.md",
+      "status": "modified copy"
+    },
+    {
+      "path": "docs/screenshots/README.md",
+      "status": "modified copy"
+    },
+    {
+      "path": "docs/screenshots/api-information.png",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "docs/screenshots/event-editor.png",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "docs/screenshots/ticket-editor.png",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "docs/security.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/testing.md",
+      "status": "modified copy"
+    },
+    {
+      "path": "docs/tickera-integration.md",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "docs/verification-results.json",
+      "status": "modified copy"
+    },
+    {
+      "path": "includes/Authorization/Ownership_Policy.php",
+      "status": "modified copy"
+    },
+    {
+      "path": "includes/Data/Tickera_Repository.php",
+      "status": "modified copy"
+    },
+    {
+      "path": "includes/Dependencies.php",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "includes/Plugin.php",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "includes/Rest/Events_Controller.php",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "includes/Rest/Resource_Controller.php",
+      "status": "modified copy"
+    },
+    {
+      "path": "includes/Rest/Tickets_Controller.php",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "includes/Services/Resource_Service.php",
+      "status": "modified copy"
+    },
+    {
+      "path": "includes/Support/Date_Time.php",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "includes/Support/Validator.php",
+      "status": "modified copy"
+    },
+    {
+      "path": "includes/Support/Write_Lock.php",
+      "status": "added"
+    },
+    {
+      "path": "phpcs.xml.dist",
+      "status": "modified copy"
+    },
+    {
+      "path": "phpstan.neon.dist",
+      "status": "added"
+    },
+    {
+      "path": "phpunit.xml.dist",
+      "status": "modified copy"
+    },
+    {
+      "path": "quixdevs-tickera-rest-api.php",
+      "status": "modified copy"
+    },
+    {
+      "path": "readme.txt",
+      "status": "modified copy"
+    },
+    {
+      "path": "tests/Integration/Dependencies_Test.php",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "tests/Integration/Lifecycle_Test.php",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "tests/Release/test_drafts.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/Release/test_package.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/Rest_Test_Case.php",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "tests/Security/Author_Isolation_Test.php",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "tests/Security/Release_Hardening_Test.php",
+      "status": "added"
+    },
+    {
+      "path": "tests/Stubs/tickera.php",
+      "status": "added"
+    },
+    {
+      "path": "tests/Unit/Date_And_Money_Test.php",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "tests/bootstrap.php",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "tests/http-smoke.py",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "tools/build-release.py",
+      "status": "modified copy"
+    },
+    {
+      "path": "tools/create-draft-release.py",
+      "status": "added"
+    },
+    {
+      "path": "tools/install-tools.py",
+      "status": "added"
+    },
+    {
+      "path": "tools/render-branding.mjs",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "tools/verify-plugin-check.py",
+      "status": "added"
+    },
+    {
+      "path": "wordpress-org-assets/README.md",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "wordpress-org-assets/banner-1544x500.png",
+      "status": "copied unchanged"
+    },
+    {
+      "path": "wordpress-org-assets/banner-772x250.png",
+      "status": "copied unchanged"
+    }
+  ]
+}

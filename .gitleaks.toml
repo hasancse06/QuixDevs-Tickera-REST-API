@@ -1,0 +1,5 @@
+[extend]
+useDefault = true
+[[allowlists]]
+description = "Generated development dependencies, isolated test fixtures and build output"
+paths = ['''(^|/)vendor/''', '''(^|/)node_modules/''', '''(^|/)\.work/''', '''(^|/)dist/''', '''(^|/)\.git/''', '''(^|/)__pycache__/''']
