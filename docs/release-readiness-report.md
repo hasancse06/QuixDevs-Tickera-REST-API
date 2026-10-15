@@ -1,5 +1,7 @@
 # QuixDevs Tickera REST API v1.0.0 — release readiness
 
+Historical preparation snapshot. The current decision and rerun results are in [final-release-audit.md](final-release-audit.md).
+
 Prepared 2026-10-15, Asia/Dhaka. Updated for the confirmed repository during documentation finalization; see [the follow-up report](documentation-finalization.md). **Local distribution verification passed; public release readiness remains conditional on maintainer version-history review and unexecuted minimum-version CI.** Nothing was committed, pushed, tagged, released or published.
 
 ## A. Original source audit

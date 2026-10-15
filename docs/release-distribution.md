@@ -4,7 +4,7 @@
 
 Repository: [hasancse06/QuixDevs-Tickera-REST-API](https://github.com/hasancse06/QuixDevs-Tickera-REST-API). The user confirmed this identity, and unauthenticated HTTP checks reached the repository and Releases page on 2026-10-15. The v1.0.0 release page and latest installation asset returned 404; no public release is claimed. The unauthenticated REST API returned empty public tag and release lists. Maintainers should also inspect private drafts with authorized access before creating a tag.
 
-The local Git directory is initialized on main with no commits, tags or configured remote. No Git configuration or history was changed during documentation finalization. Keep the repository name separate from the lowercase installation slug quixdevs-tickera-rest-api. Recommended first commit: **Prepare QuixDevs Tickera REST API v1.0.0 distribution**.
+The local Git directory is on main at cf3c6bf with origin configured to the confirmed repository and no local tags. No Git configuration or history was changed during documentation finalization. Keep the repository name separate from the lowercase installation slug quixdevs-tickera-rest-api. Recommended first commit: **Prepare QuixDevs Tickera REST API v1.0.0 distribution**.
 
 ## Reproduce the production artifact
 
@@ -34,7 +34,7 @@ That mode refuses an absent/different tag, changed plugin version, dirty checkou
 
 ## GitHub Actions
 
-ci.yml uses read-only permissions and defines PHP 8.1/8.2/8.3/8.4 × WordPress 6.8/7.1.3 integration jobs with MySQL 8.0 and genuine pinned Tickera. It checks syntax, WPCS, PHPStan, Composer advisories, packaging/release-helper unit tests, actual author isolation, fresh ZIP installation, official Plugin Check, workflow syntax and redacted source/history/extracted-package secret scans. Local results do not substitute for unexecuted remote matrix jobs.
+ci.yml uses read-only permissions and defines PHP 8.1/8.2/8.3/8.4 × WordPress 6.8/7.1.3 integration jobs with MySQL 8.0 and genuine pinned Tickera. It checks syntax, WPCS, PHPStan, Composer advisories, packaging/release-helper unit tests, actual author isolation, fresh ZIP installation, official Plugin Check, workflow syntax and redacted source/history/extracted-package secret scans. Remote execution is separately recorded in final-release-audit.md.
 
 release.yml accepts an existing stable tag on manual dispatch or tag push. It checks out automation at github.workflow_sha and source at the supplied tag in separate folders. Current automation builds that exact clean tagged source, verifies tag/version/commit, scans the package and runs reusable CI against the resolved commit. Only the final draft job has contents:write. There is no tag-writing or publishing step.
 
@@ -46,16 +46,14 @@ Do not manually publish a draft while automation is uploading. The helper checks
 
 ## Commands for later repository setup
 
-These commands are instructions only; none were run during preparation. First inspect the confirmed remote repository and its version history, review the exact file list and run checks. The following initial-commit commands apply only if the remote remains empty.
+These commands are instructions only; none were run during preparation. The repository already has main/origin and commit cf3c6bf. Review the exact diff and current remote tags before committing the final notes/workflow changes.
 
 ```sh
 cd /Users/hasanonline/WordPress-Projects-GitHub/Tickera-Event-Ticketing-System/quixdevs-tickera-rest-api-github
-git init -b main
 git add .
 git status --short
 git diff --cached --stat
 git commit -m "Prepare QuixDevs Tickera REST API v1.0.0 distribution"
-git remote add origin https://github.com/hasancse06/QuixDevs-Tickera-REST-API.git
 git ls-remote --heads --tags origin
 git push -u origin main
 ```
@@ -67,7 +65,7 @@ git tag -a v1.0.0 -m "QuixDevs Tickera REST API v1.0.0"
 git push origin v1.0.0
 ```
 
-Existing tags must never be recreated or force-moved. To update automation separately, merge the corrected workflow on the default branch, then manually dispatch Prepare draft release from that branch with the already existing tag. The artifact still comes from the selected tag's source. Review the draft's commit, ZIP layout/digest, notes, local verification limits, complete remote matrix and install result, then publish manually in GitHub Releases. README already uses the confirmed repository and exact release asset filename. A public latest URL does not resolve for a draft-only repository.
+Existing tags must never be recreated or force-moved. To update automation separately, merge the corrected workflow on the default branch, then manually dispatch Prepare draft release from that branch with the already existing tag. The artifact still comes from the selected tag's source; release notes come from docs/releases/TAG.md in that same commit. Review the draft's commit, ZIP layout/digest, notes, local verification limits, complete remote matrix and install result, then publish manually in GitHub Releases. README already uses the confirmed repository and exact release asset filename. A public latest URL does not resolve for a draft-only repository.
 
 ## Local REST helper, if needed
 

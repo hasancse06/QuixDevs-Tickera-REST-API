@@ -19,7 +19,7 @@ The eight GET/POST/PATCH operations use WordPress Application Passwords over HTT
 
 Standalone Tickera 3.6.0.8 must be installed and active. Other Tickera versions fail closed pending verification. WooCommerce is unnecessary. WooCommerce Bridge ticket products, Stripe/payment gateways, checkout, purchasing, orders, attendees, refunds, check-in and deletion are outside scope. Detected Bridge mode blocks ticket operations; event operations remain available.
 
-Header minimums are WordPress 6.8 and PHP 8.1. Local integration verification covered WordPress 6.8/7.1.3 with PHP 8.2.4/8.4.13 and Tickera 3.6.0.8; PHP 8.1/8.3 execution and remote CI remain pending. See the GitHub compatibility/testing documentation for limits.
+Header minimums are WordPress 6.8 and PHP 8.1. Local integration verification covered WordPress 6.8/7.1.3 with PHP 8.2.4/8.4.13 and Tickera 3.6.0.8; GitHub CI also passed PHP 8.1/8.2/8.3/8.4 with WordPress 6.8/7.1.3 and MySQL 8.0 at the recorded commit. See the GitHub compatibility/testing documentation for limits.
 
 The installation ZIP includes docs/rest-api.md with the full contract. The GitHub repository also provides curl, JavaScript and PHP examples and an importable Postman collection. Composer is not needed on the server. MySQL/MariaDB connection advisory locks are required for writes; conflicts return 409. A late WordPress hook failure can partially persist, so inspect resources before retrying creation.
 

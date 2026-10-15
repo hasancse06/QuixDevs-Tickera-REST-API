@@ -1,7 +1,7 @@
 {
-  "total_source_files": 81,
+  "total_source_files": 83,
   "compared_to_original": {
-    "added": 22,
+    "added": 24,
     "modified copy": 28,
     "copied unchanged": 31
   },
@@ -102,6 +102,10 @@
       "status": "added"
     },
     {
+      "path": "docs/examples.md",
+      "status": "added"
+    },
+    {
       "path": "docs/examples/curl.md",
       "status": "modified copy"
     },
@@ -118,7 +122,7 @@
       "status": "modified copy"
     },
     {
-      "path": "docs/examples.md",
+      "path": "docs/final-release-audit.md",
       "status": "added"
     },
     {
@@ -163,6 +167,10 @@
     },
     {
       "path": "docs/release-readiness-report.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/releases/v1.0.0.md",
       "status": "added"
     },
     {

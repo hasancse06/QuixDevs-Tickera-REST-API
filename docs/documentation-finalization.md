@@ -1,5 +1,7 @@
 # README and v1.0.0 documentation finalization
 
+Historical preparation snapshot. The current decision and rerun results are in [final-release-audit.md](final-release-audit.md).
+
 Completed 2026-10-15, Asia/Dhaka. Changes are confined to the GitHub distribution project. No runtime PHP, original-source files, Git configuration/history, tags or GitHub releases were changed.
 
 ## 1. Files created or modified

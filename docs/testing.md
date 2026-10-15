@@ -44,7 +44,7 @@ HTTP testing separately exercises per-user Application Password authentication, 
 
 ## WPCS and minimum PHP
 
-Runtime files are checked against the complete WordPress ruleset. The filename sniff is deliberately excluded for the requested PSR-4 class layout; all other checks remain active. `manage_ticket_templates_cap` is declared to PHPCS as a verified Tickera custom capability. Composer development dependencies resolve against PHP 8.1.0. Local execution uses PHP 8.2.4 and 8.4.13. CI defines PHP 8.1/8.2/8.3/8.4 and WordPress 6.8/7.1.3; unexecuted jobs remain pending. Run composer analyse, composer audit --locked and composer test:release as well.
+Runtime files are checked against the complete WordPress ruleset. The filename sniff is deliberately excluded for the requested PSR-4 class layout; all other checks remain active. `manage_ticket_templates_cap` is declared to PHPCS as a verified Tickera custom capability. Composer development dependencies resolve against PHP 8.1.0. Local execution uses PHP 8.2.4 and 8.4.13. CI defines PHP 8.1/8.2/8.3/8.4 and WordPress 6.8/7.1.3; all eight jobs passed in the public Quality run at cf3c6bf; see final-release-audit.md for current evidence. Run composer analyse, composer audit --locked and composer test:release as well.
 
 Upstream Tickera 3.6.0.8 uses dynamic properties and can emit PHP 8.2+ deprecation notices. The test bootstrap masks upstream deprecations; the addon runtime never changes error_reporting. Other errors/warnings still fail PHPUnit. No warning suppression is applied to WPCS or production Plugin Check.
 

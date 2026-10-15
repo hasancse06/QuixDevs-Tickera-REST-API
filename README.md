@@ -63,7 +63,7 @@ See [installation](docs/installation.md) and [configuration](docs/configuration.
 | Database | MySQL/MariaDB with connection advisory locks | MariaDB 10.4.28 |
 | Transport | HTTPS for external integrations and production writes | Local HTTP authentication; HTTPS enforcement in integration tests |
 
-PHP 8.1/8.3 and MySQL 8.0 are configured CI targets, not locally executed compatibility results. Production TLS/proxy behavior and multisite are unverified. See [compatibility](docs/compatibility.md) and the [verification results](docs/verification-results.json).
+The [public CI run](https://github.com/hasancse06/QuixDevs-Tickera-REST-API/actions/runs/38745788491) also passed PHP 8.1/8.2/8.3/8.4 × WordPress 6.8/7.1.3 with MySQL 8.0 at commit `cf3c6bf`. Production TLS/proxy behavior and multisite are unverified. See [compatibility](docs/compatibility.md) and the [verification results](docs/verification-results.json).
 
 ## Getting Started
 
@@ -167,13 +167,13 @@ Related addon writes use nonblocking database locks. A conflict/unavailable lock
 - [Compatibility](docs/compatibility.md) and [Tickera data model](docs/tickera-integration.md)
 - [Testing](docs/testing.md) and [recorded verification results](docs/verification-results.json)
 - [Release distribution and manual publication](docs/release-distribution.md)
-- [v1.0.0 release notes](docs/github-release-notes.md)
+- [v1.0.0 release notes](docs/releases/v1.0.0.md)
 
 ## Testing & Quality Assurance
 
 The recorded local integration matrix covers WordPress **6.8/7.1.3** with PHP **8.2.4/8.4.13** and genuine Tickera **3.6.0.8**. Each combination passed **56 tests and 433 assertions**. Additional verification passed **14 real HTTP authentication/API checks** and **17 packaging/draft-helper tests**. Recorded WPCS, PHPStan, official Plugin Check, workflow linting and secret scans passed; see [verification evidence and limits](docs/release-readiness-report.md).
 
-These are local preparation results. The configured PHP 8.1/8.2/8.3/8.4 GitHub Actions matrix has not been represented as an executed remote run. Test-bootstrap suppression of upstream Tickera deprecations and other limits are documented in [testing.md](docs/testing.md).
+The [public Quality run](https://github.com/hasancse06/QuixDevs-Tickera-REST-API/actions/runs/38745788491) passed all eight PHP 8.1/8.2/8.3/8.4 × WordPress 6.8/7.1.3 jobs at commit `cf3c6bf`. Current final verification and its remaining limits are recorded in the [final release audit](docs/final-release-audit.md). Test-bootstrap suppression of upstream Tickera deprecations and other limits are documented in [testing.md](docs/testing.md).
 
 ```sh
 composer install

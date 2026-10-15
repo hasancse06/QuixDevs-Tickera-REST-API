@@ -84,9 +84,10 @@ jobs:
       - name: Read release notes from the exact validated commit
         env:
           SOURCE_COMMIT: ${{ needs.package.outputs.commit }}
+          RELEASE_TAG: ${{ needs.package.outputs.tag }}
         run: |
           git fetch --no-tags origin "$SOURCE_COMMIT"
-          git show "$SOURCE_COMMIT:docs/github-release-notes.md" > dist/notes.md
+          git show "$SOURCE_COMMIT:docs/releases/$RELEASE_TAG.md" > dist/notes.md
       - name: Create or resume draft; never publish
         env:
           GITHUB_TOKEN: ${{ github.token }}

@@ -66,3 +66,7 @@ Desktop.ini
 
 # Generated WordPress.org screenshot copies; keep docs/screenshots as the source.
 /wordpress-org-assets/screenshot-*.png
+
+# Isolated release-validation fixtures, credentials and tool caches.
+/.work/
+/.phpstan-cache/

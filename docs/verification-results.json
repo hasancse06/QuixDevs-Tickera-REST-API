@@ -22,7 +22,21 @@
       "tests": 56,
       "assertions": 433,
       "result": "pass",
-      "installed_runtime_zip": true
+      "installed_runtime_zip": true,
+      "suites": {
+        "Unit": {
+          "tests": 2,
+          "assertions": 13
+        },
+        "Integration": {
+          "tests": 30,
+          "assertions": 177
+        },
+        "Security": {
+          "tests": 24,
+          "assertions": 243
+        }
+      }
     },
     {
       "php": "8.4.13",
@@ -31,7 +45,21 @@
       "tests": 56,
       "assertions": 433,
       "result": "pass",
-      "installed_runtime_zip": true
+      "installed_runtime_zip": true,
+      "suites": {
+        "Unit": {
+          "tests": 2,
+          "assertions": 13
+        },
+        "Integration": {
+          "tests": 30,
+          "assertions": 177
+        },
+        "Security": {
+          "tests": 24,
+          "assertions": 243
+        }
+      }
     },
     {
       "php": "8.2.4",
@@ -40,7 +68,21 @@
       "tests": 56,
       "assertions": 433,
       "result": "pass",
-      "installed_runtime_zip": true
+      "installed_runtime_zip": true,
+      "suites": {
+        "Unit": {
+          "tests": 2,
+          "assertions": 13
+        },
+        "Integration": {
+          "tests": 30,
+          "assertions": 177
+        },
+        "Security": {
+          "tests": 24,
+          "assertions": 243
+        }
+      }
     },
     {
       "php": "8.4.13",
@@ -49,15 +91,45 @@
       "tests": 56,
       "assertions": 433,
       "result": "pass",
-      "installed_runtime_zip": true
+      "installed_runtime_zip": true,
+      "suites": {
+        "Unit": {
+          "tests": 2,
+          "assertions": 13
+        },
+        "Integration": {
+          "tests": 30,
+          "assertions": 177
+        },
+        "Security": {
+          "tests": 24,
+          "assertions": 243
+        }
+      }
     }
   ],
   "http": {
-    "wordpress": "6.8",
+    "wordpress": "7.1.3",
     "php": "8.4.13",
-    "checks": 14,
+    "checks": [
+      "Anonymous HTTP rejected",
+      "Application Password event creation",
+      "Private no-store caching",
+      "Forced author identity",
+      "HTTP owner detail",
+      "HTTP event PATCH",
+      "HTTP ticket creation",
+      "HTTP nested ticket list",
+      "HTTP ticket detail",
+      "HTTP ticket PATCH",
+      "HTTP owned events list",
+      "Cookie without nonce rejected",
+      "Cookie with valid REST nonce",
+      "Invalid REST nonce rejected"
+    ],
     "result": "pass",
-    "scope": "All eight operations; Application Password, cookie/nonce, anonymous rejection, cache headers"
+    "scope": "All eight operations; Application Password, cookie/nonce, anonymous rejection, cache headers",
+    "passed": 14
   },
   "native_admin_fields": "Actual Tickera renderers verify event date/location and ticket association/price/quantity, including patched price",
   "dependency_missing_inactive": "Actual separate WordPress boots; no fatal, safe notice, 503",
@@ -77,29 +149,25 @@
     "phpstan_level": 5,
     "phpstan": "zero errors; no baseline",
     "phpcompatibility": "PHPCompatibilityWP 8.1-: zero findings; static only",
-    "plugin_check": "zero findings on production package, WordPress 6.8 and 7.1.3",
+    "plugin_check": "2.1.0, zero findings on final production ZIP on WordPress 6.8 and 7.1.3",
     "python_release_tests": 17,
     "workflow_syntax": "actionlint pass; shellcheck unavailable, explicitly disabled",
     "composer_audit": "no advisories",
-    "secret_scans": "Gitleaks source plus extracted package: no findings",
+    "secret_scans": "Gitleaks source, committed history and installed final ZIP: zero leaks",
     "reproducibility": "identical repeated builds in same Python/zlib environment"
   },
   "archive": {
     "archive": "quixdevs-tickera-rest-api.zip",
-    "bytes": 34977,
-    "sha256": "6db0a87c3188e6ef9ceb885967e9d9ed0956185d16c04b48b802bd60c23fa5f8"
+    "bytes": 34995,
+    "sha256": "e8f16fb88e59e8058a6cb2cd55e13688bbb2c2b9f4e8f58b02c8f320ae91c7ff"
   },
   "archive_files": 15,
   "unexecuted": [
-    "PHP 8.1 runtime",
-    "PHP 8.3 runtime",
-    "GitHub-hosted Actions matrix",
-    "MySQL 8.0 CI runtime",
-    "Live GitHub draft/upload API",
-    "Git history scan (initialized local repository has no commits)",
-    "Multisite",
-    "Premium Bridge",
-    "Production TLS/proxy/mobile deployment"
+    "Live GitHub draft/upload API (mutations forbidden; state-machine tests simulated)",
+    "Multisite deployment",
+    "Premium Bridge (unsupported)",
+    "Production TLS/proxy/mobile deployment",
+    "Final uncommitted notes/workflow edits have not run on GitHub CI"
   ],
   "repository": {
     "url": "https://github.com/hasancse06/QuixDevs-Tickera-REST-API",
@@ -108,12 +176,13 @@
     "http_releases_status": 200,
     "http_version_page_status": 404,
     "http_latest_asset_status": 404,
-    "local_remote": null,
+    "local_remote": "git@github.com:hasancse06/QuixDevs-Tickera-REST-API.git",
     "public_history_verified": true,
     "download_links": "Exact confirmed repository URLs; publication-dependent links documented",
     "public_tags": [],
     "public_releases": [],
-    "private_drafts_verified": false
+    "private_drafts_verified": false,
+    "local_tags": []
   },
   "performed_external_mutations": {
     "commits": 0,
@@ -132,5 +201,479 @@
     "previous_runtime_results_retained": true,
     "packaging_tests_rerun": 17,
     "zip_rebuilt": true
+  },
+  "final_release_decision": "RELEASE READY for maintainer commit and existing-tag draft workflow; nothing published",
+  "source_commit_at_audit": "cf3c6bf6624889e4372ec4ad0dc837ff9d881228",
+  "remote_ci": {
+    "run_id": 38745788491,
+    "url": "https://github.com/hasancse06/QuixDevs-Tickera-REST-API/actions/runs/38745788491",
+    "sha": "cf3c6bf6624889e4372ec4ad0dc837ff9d881228",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "integration (8.1, 7.1.3)",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Initialize containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run shivammathur/setup-php@v2",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run composer install --no-interaction --prefer-dist",
+            "conclusion": "success"
+          },
+          {
+            "name": "Syntax, standards, static analysis and dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install isolated WordPress and pinned Tickera",
+            "conclusion": "success"
+          },
+          {
+            "name": "Real WordPress and Tickera ownership tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build, freshly install and check production ZIP",
+            "conclusion": "success"
+          },
+          {
+            "name": "Lint workflows and scan source, history and extracted package",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Stop containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "integration (8.2, 6.8)",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Initialize containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run shivammathur/setup-php@v2",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run composer install --no-interaction --prefer-dist",
+            "conclusion": "success"
+          },
+          {
+            "name": "Syntax, standards, static analysis and dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install isolated WordPress and pinned Tickera",
+            "conclusion": "success"
+          },
+          {
+            "name": "Real WordPress and Tickera ownership tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build, freshly install and check production ZIP",
+            "conclusion": "success"
+          },
+          {
+            "name": "Lint workflows and scan source, history and extracted package",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Stop containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "integration (8.3, 6.8)",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Initialize containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run shivammathur/setup-php@v2",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run composer install --no-interaction --prefer-dist",
+            "conclusion": "success"
+          },
+          {
+            "name": "Syntax, standards, static analysis and dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install isolated WordPress and pinned Tickera",
+            "conclusion": "success"
+          },
+          {
+            "name": "Real WordPress and Tickera ownership tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build, freshly install and check production ZIP",
+            "conclusion": "success"
+          },
+          {
+            "name": "Lint workflows and scan source, history and extracted package",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Stop containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "integration (8.1, 6.8)",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Initialize containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run shivammathur/setup-php@v2",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run composer install --no-interaction --prefer-dist",
+            "conclusion": "success"
+          },
+          {
+            "name": "Syntax, standards, static analysis and dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install isolated WordPress and pinned Tickera",
+            "conclusion": "success"
+          },
+          {
+            "name": "Real WordPress and Tickera ownership tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build, freshly install and check production ZIP",
+            "conclusion": "success"
+          },
+          {
+            "name": "Lint workflows and scan source, history and extracted package",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Stop containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "integration (8.4, 7.1.3)",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Initialize containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run shivammathur/setup-php@v2",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run composer install --no-interaction --prefer-dist",
+            "conclusion": "success"
+          },
+          {
+            "name": "Syntax, standards, static analysis and dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install isolated WordPress and pinned Tickera",
+            "conclusion": "success"
+          },
+          {
+            "name": "Real WordPress and Tickera ownership tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build, freshly install and check production ZIP",
+            "conclusion": "success"
+          },
+          {
+            "name": "Lint workflows and scan source, history and extracted package",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Stop containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "integration (8.3, 7.1.3)",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Initialize containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run shivammathur/setup-php@v2",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run composer install --no-interaction --prefer-dist",
+            "conclusion": "success"
+          },
+          {
+            "name": "Syntax, standards, static analysis and dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install isolated WordPress and pinned Tickera",
+            "conclusion": "success"
+          },
+          {
+            "name": "Real WordPress and Tickera ownership tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build, freshly install and check production ZIP",
+            "conclusion": "success"
+          },
+          {
+            "name": "Lint workflows and scan source, history and extracted package",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Stop containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "integration (8.4, 6.8)",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Initialize containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run shivammathur/setup-php@v2",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run composer install --no-interaction --prefer-dist",
+            "conclusion": "success"
+          },
+          {
+            "name": "Syntax, standards, static analysis and dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install isolated WordPress and pinned Tickera",
+            "conclusion": "success"
+          },
+          {
+            "name": "Real WordPress and Tickera ownership tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build, freshly install and check production ZIP",
+            "conclusion": "success"
+          },
+          {
+            "name": "Lint workflows and scan source, history and extracted package",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Stop containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "integration (8.2, 7.1.3)",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Initialize containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run shivammathur/setup-php@v2",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run composer install --no-interaction --prefer-dist",
+            "conclusion": "success"
+          },
+          {
+            "name": "Syntax, standards, static analysis and dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install isolated WordPress and pinned Tickera",
+            "conclusion": "success"
+          },
+          {
+            "name": "Real WordPress and Tickera ownership tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build, freshly install and check production ZIP",
+            "conclusion": "success"
+          },
+          {
+            "name": "Lint workflows and scan source, history and extracted package",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "conclusion": "success"
+          },
+          {
+            "name": "Stop containers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
   }
 }
